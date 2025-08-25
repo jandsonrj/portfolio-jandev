@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-// import { GoogleGenAI } from '@google/genai';
-import { SparklesIcon, CloseIcon, SendIcon, ChatBubbleIcon } from '../components/Icons';
+import { SparklesIcon, CloseIcon, SendIcon, ChatBubbleIcon } from './Icons';
 
 interface ChatbotContent {
   title: string;
@@ -26,8 +25,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ knowledgeBase, language, content }) =
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  // const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
 
   // Add initial welcome message when chat opens or language changes
   useEffect(() => {
