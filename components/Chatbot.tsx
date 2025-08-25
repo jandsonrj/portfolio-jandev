@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { GoogleGenAI } from '@google/genai';
+// import { GoogleGenAI } from '@google/genai';
 import { SparklesIcon, CloseIcon, SendIcon, ChatBubbleIcon } from '../components/Icons';
 
 interface ChatbotContent {
@@ -27,7 +27,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ knowledgeBase, language, content }) =
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+  // const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
 
   // Add initial welcome message when chat opens or language changes
   useEffect(() => {
@@ -39,7 +39,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ knowledgeBase, language, content }) =
   };
 
   useEffect(scrollToBottom, [messages]);
-  
+
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
@@ -50,18 +50,25 @@ const Chatbot: React.FC<ChatbotProps> = ({ knowledgeBase, language, content }) =
     setIsLoading(true);
 
     try {
-      const langInstruction = language === 'pt' ? 'Responda em Português.' : 'Answer in English.';
-      const systemInstruction = `Você é um assistente prestativo para o portfólio de Jandson Vitorino. Use apenas as informações fornecidas abaixo para responder às perguntas do usuário. Não invente nenhuma informação. Se a resposta não estiver no texto, diga que você não tem essa informação. ${langInstruction}`;
-      
-      const prompt = `${systemInstruction}\n\nINFORMAÇÕES DO PORTFÓLIO:\n${knowledgeBase}\n\nPERGUNTA DO USUÁRIO:\n${inputValue}`;
-
-      const response = await ai.models.generateContent({
-          model: 'gemini-2.5-flash',
-          contents: prompt,
+      const resp = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: userMessage.text,
+          language,
+          knowledgeBase
+        })
       });
 
-      const aiMessage: Message = { sender: 'ai', text: response.text };
-      setMessages(prev => [...prev, aiMessage]);
+      const data = await resp.json();
+      const text =
+        typeof data?.text === 'string' && data.text.trim().length > 0
+          ? data.text
+          : (language === 'pt'
+            ? 'Desculpe, ocorreu um erro. Tente novamente.'
+            : 'Sorry, an error occurred. Please try again.');
+
+      setMessages(prev => [...prev, { sender: 'ai', text }]);
     } catch (error) {
       console.error("Error fetching AI response:", error);
       const errorMessage: Message = { sender: 'ai', text: language === 'pt' ? 'Desculpe, ocorreu um erro. Tente novamente.' : 'Sorry, an error occurred. Please try again.' };
@@ -98,13 +105,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ knowledgeBase, language, content }) =
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                  <div className="max-w-[80%] p-3 rounded-2xl bg-gray-700 text-gray-200 rounded-bl-none">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-75"></span>
-                        <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-150"></span>
-                        <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-300"></span>
-                      </div>
+                <div className="max-w-[80%] p-3 rounded-2xl bg-gray-700 text-gray-200 rounded-bl-none">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-75"></span>
+                    <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-150"></span>
+                    <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-300"></span>
                   </div>
+                </div>
               </div>
             )}
             <div ref={messagesEndRef} />
