@@ -70,31 +70,31 @@ export const content = {
         subtitle: 'Projetos',
         list: [
           {
-            imgSrc: '//assets/calculator.jpg',
+            imgSrc: '/assets/calculator.jpg',
             title: 'Calculadora',
             description: 'Resolvi por em prática tudo o que aprendi durante os cursos complementares, e logo veio a ideia de desenvolver minha própria calculadora, usando: HTML, CSS E JavaScript.',
             link: 'https://jandsonrj.github.io/calculadora/',
           },
           {
-            imgSrc: '//assets/stopwatch.jpg',
+            imgSrc: '/assets/stopwatch.jpg',
             title: 'Cronômetro',
             description: 'Buscando aprimorar meus conhecimentos com a linguagem de programação JavaScript resolvi desenvolver esse cronômetro digital, projeto um tanto quanto básico, porém bem intuitivo.',
             link: 'https://jandsonrj.github.io/cronometro/',
           },
           {
-            imgSrc: '//assets/background.png',
+            imgSrc: '/assets/background.png',
             title: 'Meu Portfólio',
             description: 'Com o intuito de compartilhar minha biografia com vocês e também está mostrando alguns projetos sem precisar me preocupar com limitações eu desenvolvi meu próprio Portfólio.',
             link: '#',
           },
           {
-            imgSrc: '//assets/pws.png',
+            imgSrc: '/assets/pws.png',
             title: 'PW-Sorvetes',
             description: 'Desafio prático para uma vaga de Desenvolvedor. Criei um site único, que se destaca pela sua originalidade em comparação com soluções convencionais.',
             link: 'https://jandsonrj.github.io/projetopws/',
           },
           {
-            imgSrc: '//assets/pokemon.png',
+            imgSrc: '/assets/pokemon.png',
             title: 'Pokémon',
             description: 'Este projeto é uma aplicação básica que utiliza a PokeAPI para exibir uma lista de Pokémon e seus detalhes.',
             link: 'https://pokemon-ionic-app.vercel.app/',
@@ -204,7 +204,7 @@ export const content = {
         subtitle: 'Projects',
         list: [
           {
-            imgSrc: '//assets/calculator.jpg',
+            imgSrc: '/assets/calculator.jpg',
             title: 'Calculator',
             description: 'I decided to practice what I learned in complementary courses and came up with the idea of developing my own calculator using HTML, CSS, and JavaScript.',
             link: 'https://jandsonrj.github.io/calculadora/',
