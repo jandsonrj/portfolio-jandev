@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
 
 
   return (
-    <section id="home" className="h-screen flex items-center bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('assets/background.png')" }}>
+    <section id="home" className="h-screen flex items-center bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/assets/background.png')" }}>
       <div className="absolute inset-0 bg-black/70"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-white font-ubuntu">
