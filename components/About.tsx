@@ -26,7 +26,7 @@ const About: React.FC<AboutProps> = ({ content }) => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="w-full md:w-2/5 flex justify-center">
             <img 
-              src="https://i.postimg.cc/52nYSQQ9/jandev-Copia.jpg" 
+              src="/assets/jandev.jpg" 
               alt="Jandson Vitorino" 
               className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-full shadow-2xl border-8 border-cyan-500"
             />
