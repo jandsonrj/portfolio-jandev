@@ -40,7 +40,7 @@ const About: React.FC<AboutProps> = ({ content }) => {
               <p>{content.p4}</p>
             </div>
             <a 
-              href="https://drive.google.com/file/d/1vInJD4JaNoe7fXNKnKnhDf4KpPek6_dm/view?usp=drive_link" 
+              href="https://drive.google.com/file/d/1jB2IYaOGCdgd4PewbURrFdZXQ7V8WAoZ/view?usp=sharing" 
               target="_blank" 
               rel="noopener noreferrer"
               className="mt-8 inline-block bg-cyan-500 text-white text-lg font-semibold px-8 py-3 rounded-md border-2 border-cyan-500 transition-all duration-300 hover:bg-transparent hover:text-cyan-400"
